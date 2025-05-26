@@ -1,12 +1,8 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from "graphql";
 import {MemberType, MemberTypeId} from './MemberType.js'
-import { PrismaClient } from "@prisma/client";
-import { FastifyInstance } from "fastify";
+import GraphQLContext from "./interfase.js";
 
-interface GraphQLContext {
-  prisma: PrismaClient;
-  fastify: FastifyInstance;
-}
+
 
 
 export const rootQuety = new GraphQLObjectType({

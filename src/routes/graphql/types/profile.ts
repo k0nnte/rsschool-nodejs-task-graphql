@@ -1,0 +1,24 @@
+import { GraphQLBoolean, GraphQLInt, GraphQLNonNull, GraphQLObjectType } from "graphql";
+import { UUIDType } from "./uuid.js";
+import { MemberType } from "./MemberType.js";
+import GraphQLContext from "./interfase.js";
+
+export const ProfileType = new GraphQLObjectType({
+    name: 'profile',
+    fields: () => ({
+        id: {type: new GraphQLNonNull(UUIDType)},
+        isMale: {type:  new GraphQLNonNull(GraphQLBoolean)},
+        yearOfBirth: {type:  new GraphQLNonNull(GraphQLInt)},
+        memberType: {type: new GraphQLNonNull(MemberType),
+            resolve: (parent, args, context: GraphQLContext) => {
+                const memberType = await context.prisma.memberType.findMany({
+                    where:{id: { in: parent.MemberTypeId}}
+                })
+                
+            }
+         },
+          
+        
+    })
+    
+})

@@ -9,7 +9,7 @@ export const User = new GraphQLObjectType({
         name: {type: new GraphQLNonNull(GraphQLString)},
         balance: {type: new GraphQLNonNull(GraphQLFloat)},
         profile: {
-            type: "Profile",
+            type: ,
             resolve: async (parent, args, contesxt) => {
                 
             }
